@@ -26,23 +26,23 @@ jobs:
             fi
             docker login -u "${DOCKER_USER}" -p "${DOCKER_PASS}" repo.treescale.com/snahelou22/middleware
             docker push "repo.treescale.com/snahelou22/middleware:${TAG}"
-      - deploy:
-          name: Deploy app to Kubernetes using Weave FLux 
-          command: |
-            git clone https://github.com/snahelou/demo-gitops.git
-            cd demo-gitops/demo
-            git config credential.helper 'cache --timeout=120'
-            git config user.email "${GITHUB_EMAIL}"
-            git config user.name "CircleCI"
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              OPS_BRANCH=master
-              TAG=1.1.$CIRCLE_BUILD_NUM
-            else
-              OPS_BRANCH=develop
-              TAG=0.1.$CIRCLE_BUILD_NUM
-            fi
-            git checkout "${OPS_BRANCH}"
-            sed -i "s/image: repo.treescale.com\/snahelou22\/middleware:.*$/image: repo.treescale.com\/snahelou22\/middleware:${TAG}/g" middle-deployment.yaml
-            git add .
-            git commit -m "Update via CircleCI"
-            git push -q "https://${GITHUB_PERSONAL_TOKEN}@github.com/snahelou/demo-gitops.git" "${OPS_BRANCH}"
+#      - deploy:
+#          name: Deploy app to Kubernetes using Weave FLux 
+#          command: |
+#            git clone https://github.com/snahelou/demo-gitops.git
+#            cd demo-gitops/demo
+#            git config credential.helper 'cache --timeout=120'
+#            git config user.email "${GITHUB_EMAIL}"
+#            git config user.name "CircleCI"
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              OPS_BRANCH=master
+#              TAG=1.1.$CIRCLE_BUILD_NUM
+#            else
+#              OPS_BRANCH=develop
+#              TAG=0.1.$CIRCLE_BUILD_NUM
+#            fi
+#            git checkout "${OPS_BRANCH}"
+#            sed -i "s/image: repo.treescale.com\/snahelou22\/middleware:.*$/image: repo.treescale.com\/snahelou22\/middleware:${TAG}/g" middle-deployment.yaml
+#            git add .
+#            git commit -m "Update via CircleCI"
+#            git push -q "https://${GITHUB_PERSONAL_TOKEN}@github.com/snahelou/demo-gitops.git" "${OPS_BRANCH}"

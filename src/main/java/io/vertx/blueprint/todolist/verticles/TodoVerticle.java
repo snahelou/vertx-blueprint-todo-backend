@@ -91,7 +91,7 @@ public class TodoVerticle extends AbstractVerticle {
     // routes
     router.get(Constants.API_GET).handler(this::handleGetTodo);
     router.get(Constants.API_LIST_ALL).handler(this::handleGetAll);
-    router.post(Constants.API_CREATE).handler(this::handleCreateTodo);
+//    router.post(Constants.API_CREATE).handler(this::handleCreateTodo);
     router.patch(Constants.API_UPDATE).handler(this::handleUpdateTodo);
     router.delete(Constants.API_DELETE).handler(this::handleDeleteOne);
     router.delete(Constants.API_DELETE_ALL).handler(this::handleDeleteAll);
