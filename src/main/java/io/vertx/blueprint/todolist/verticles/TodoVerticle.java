@@ -79,7 +79,7 @@ public class TodoVerticle extends AbstractVerticle {
     allowHeaders.add("accept");
     Set<HttpMethod> allowMethods = new HashSet<>();
     allowMethods.add(HttpMethod.GET);
-//    allowMethods.add(HttpMethod.POST);
+    allowMethods.add(HttpMethod.POST);
     allowMethods.add(HttpMethod.DELETE);
     allowMethods.add(HttpMethod.PATCH);
 
